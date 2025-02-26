@@ -36,8 +36,8 @@ export function Navbar({ links, user }: NavbarProps) {
           {/* Logo */}
           <Link to="/" className="flex items-center">
             <img
-              src="/lovable-uploads/65d0c072-b5e5-4fb0-b73a-ce424ae9b099.png"
-              alt="Logo"
+              src="/lovable-uploads/f850fee0-2a51-4ae3-8743-c7fdd9031b3c.png"
+              alt="Newstel Worldwide"
               className="h-12 w-auto"
             />
           </Link>
