@@ -21,9 +21,9 @@ export default {
     extend: {
       colors: {
         navy: {
-          DEFAULT: "#2B374A",
-          light: "#3A4B63",
-          dark: "#1E2A3B",
+          DEFAULT: "#3B495E",
+          light: "#4B5B73",
+          dark: "#2E3A4A",
         },
         coral: {
           DEFAULT: "#FF6B6B",
