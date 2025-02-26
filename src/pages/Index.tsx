@@ -1,3 +1,4 @@
+
 import { useState } from "react";
 import { Button } from "@/components/ui/button";
 import { Navbar } from "@/components/ui/navbar";
@@ -42,16 +43,16 @@ const Index = () => {
       <div className="relative bg-navy pb-32">
         <div className="container mx-auto px-4 pt-24 pb-48">
           <h1 className="text-4xl md:text-5xl font-bold text-white text-center animate-fade-up opacity-0 [--delay:200ms]">
-            Empower Your Business with Expert Support Solutions
+            UK's Premier Outsourced Customer Service Solutions
           </h1>
           <p className="mt-6 text-lg text-gray-300 text-center max-w-2xl mx-auto animate-fade-up opacity-0 [--delay:400ms]">
-            Streamline your operations and enhance customer satisfaction with our tailored services.
+            Transform your customer experience with our UK-based outsourced customer service team. Reduce costs by up to 40% while maintaining exceptional service quality.
           </p>
           <div className="mt-8 flex justify-center animate-fade-up opacity-0 [--delay:600ms]">
             <Button
               className="bg-coral hover:bg-coral-dark text-white px-8 py-6 rounded-full text-lg transition-all duration-300"
             >
-              Get Your Free Consultation Now
+              Get Your Free UK Support Quote Today
             </Button>
           </div>
         </div>
@@ -73,26 +74,26 @@ const Index = () => {
         <div className="glass-card rounded-xl shadow-2xl p-8 max-w-2xl mx-auto bg-white">
           <form onSubmit={handleSubmit} className="space-y-6">
             <Input
-              placeholder="Name"
+              placeholder="Your Name"
               className="w-full p-4 rounded-lg border border-gray-200"
               value={formData.name}
               onChange={(e) => setFormData({ ...formData, name: e.target.value })}
             />
             <Input
               type="email"
-              placeholder="Email"
+              placeholder="Business Email"
               className="w-full p-4 rounded-lg border border-gray-200"
               value={formData.email}
               onChange={(e) => setFormData({ ...formData, email: e.target.value })}
             />
             <Input
-              placeholder="Phone"
+              placeholder="Phone Number"
               className="w-full p-4 rounded-lg border border-gray-200"
               value={formData.phone}
               onChange={(e) => setFormData({ ...formData, phone: e.target.value })}
             />
             <Textarea
-              placeholder="How Can We Help?"
+              placeholder="Tell us about your customer service needs"
               className="w-full p-4 rounded-lg border border-gray-200"
               value={formData.message}
               onChange={(e) => setFormData({ ...formData, message: e.target.value })}
@@ -101,7 +102,7 @@ const Index = () => {
               type="submit"
               className="w-full bg-coral hover:bg-coral-dark text-white py-4 rounded-lg transition-all duration-300"
             >
-              Request Free Consultation
+              Get Your Free Consultation
             </Button>
           </form>
         </div>
@@ -110,20 +111,20 @@ const Index = () => {
       {/* Features Section */}
       <div className="bg-gray-50 py-24">
         <div className="container mx-auto px-4">
-          <h2 className="text-3xl font-bold text-center mb-16">The Newstel Edge</h2>
+          <h2 className="text-3xl font-bold text-center mb-16">Why Choose Our UK Customer Service Solutions</h2>
           <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
             {[
               {
-                title: "24/7 Expert Support",
-                subtitle: "Tailored to Your Needs",
+                title: "UK-Based Support Team",
+                subtitle: "Native English-Speaking Professionals",
               },
               {
-                title: "Scalable Solutions",
-                subtitle: "for Businesses of All Sizes",
+                title: "24/7 Customer Care",
+                subtitle: "Round-the-Clock UK Coverage",
               },
               {
-                title: "Proven Results",
-                subtitle: "98% Customer Satisfaction",
+                title: "40% Cost Reduction",
+                subtitle: "Without Compromising Quality",
               },
             ].map((feature, index) => (
               <div
@@ -141,19 +142,19 @@ const Index = () => {
 
       {/* FAQ Section */}
       <div className="container mx-auto px-4 py-24">
-        <h2 className="text-3xl font-bold text-center mb-16">Frequently Asked Questions</h2>
+        <h2 className="text-3xl font-bold text-center mb-16">Common Questions About UK Outsourced Support</h2>
         <div className="max-w-3xl mx-auto">
           <Accordion type="single" collapsible>
             {[
-              "What services does Newstel offer?",
-              "Why choose Newstel for customer service?",
-              "Which industries or companies does Newstel support?",
-              "What are the benefits of outsourcing?",
-              "How does Newstel assist with new technologies?",
-              "How is quality assurance handled?",
-              "What is Newstel's pricing structure?",
-              "What is the contract commitment?",
-              "What does communication with Newstel look like?",
+              "How does UK-based outsourced customer service work?",
+              "What are the cost benefits of outsourcing customer service?",
+              "Can you handle multiple communication channels?",
+              "How do you maintain service quality?",
+              "What industries do you support in the UK?",
+              "How quickly can you implement the service?",
+              "What technology and systems do you use?",
+              "How do you handle data protection and GDPR?",
+              "What are your service level agreements (SLAs)?",
             ].map((question, index) => (
               <AccordionItem key={index} value={`item-${index}`}>
                 <AccordionTrigger className="text-left">{question}</AccordionTrigger>
