@@ -1,6 +1,6 @@
-
 import { useState } from "react";
 import { Button } from "@/components/ui/button";
+import { Navbar } from "@/components/ui/navbar";
 import {
   Accordion,
   AccordionContent,
@@ -9,6 +9,16 @@ import {
 } from "@/components/ui/accordion";
 import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
+
+const navigationLinks = [
+  { text: "Why Choose Us?", href: "/why-choose-us" },
+  { text: "Our Services", href: "/services" },
+  { text: "Technology", href: "/technology" },
+  { text: "About Us", href: "/about" },
+  { text: "Case Studies", href: "/case-studies" },
+  { text: "Newstel Insights", href: "/insights" },
+  { text: "Contact", href: "/contact" },
+];
 
 const Index = () => {
   const [formData, setFormData] = useState({
@@ -26,6 +36,8 @@ const Index = () => {
 
   return (
     <div className="min-h-screen bg-white">
+      <Navbar links={navigationLinks} />
+      
       {/* Hero Section */}
       <div className="relative bg-navy pb-32">
         <div className="container mx-auto px-4 pt-24 pb-48">
