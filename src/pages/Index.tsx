@@ -176,7 +176,7 @@ const Index = () => {
           </div>
 
           {/* Services */}
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-8 mb-16">
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
             {[
               {
                 icon: Headphones,
@@ -207,63 +207,6 @@ const Index = () => {
               </Card>
             ))}
           </div>
-
-          {/* CTA Section */}
-          <div className="text-center">
-            <div className="max-w-2xl mx-auto bg-navy rounded-2xl p-8 text-white">
-              <h3 className="text-2xl font-bold mb-4">
-                See Our Impact in Action
-              </h3>
-              <p className="text-gray-300 mb-6">
-                Discover how we helped a leading e-commerce brand reduce response times by 60% while increasing customer satisfaction scores.
-              </p>
-              <div className="flex flex-col sm:flex-row gap-4 justify-center">
-                <Button
-                  className="bg-coral hover:bg-coral-dark text-white px-8 py-6 rounded-full text-lg transition-all duration-300"
-                  onClick={() => window.location.href = '/case-studies'}
-                >
-                  Read Case Study
-                </Button>
-                <Button
-                  variant="outline"
-                  className="bg-transparent border-2 border-white hover:bg-white/10 text-white px-8 py-6 rounded-full text-lg transition-all duration-300"
-                  onClick={() => {
-                    const form = document.querySelector('form');
-                    form?.scrollIntoView({ behavior: 'smooth' });
-                  }}
-                >
-                  Get Started Now
-                </Button>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-
-      {/* FAQ Section */}
-      <div className="container mx-auto px-4 py-24">
-        <h2 className="text-3xl font-bold text-center mb-16">Common Questions About UK Outsourced Support</h2>
-        <div className="max-w-3xl mx-auto">
-          <Accordion type="single" collapsible>
-            {[
-              "How does UK-based outsourced customer service work?",
-              "What are the cost benefits of outsourcing customer service?",
-              "Can you handle multiple communication channels?",
-              "How do you maintain service quality?",
-              "What industries do you support in the UK?",
-              "How quickly can you implement the service?",
-              "What technology and systems do you use?",
-              "How do you handle data protection and GDPR?",
-              "What are your service level agreements (SLAs)?",
-            ].map((question, index) => (
-              <AccordionItem key={index} value={`item-${index}`}>
-                <AccordionTrigger className="text-left">{question}</AccordionTrigger>
-                <AccordionContent>
-                  Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
-                </AccordionContent>
-              </AccordionItem>
-            ))}
-          </Accordion>
         </div>
       </div>
 
