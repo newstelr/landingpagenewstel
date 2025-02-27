@@ -8,11 +8,10 @@ import { useToast } from "@/hooks/use-toast";
 import { Loader2 } from "lucide-react";
 import emailjs from "emailjs-com";
 
-// Initialize EmailJS
-// Note: In a production environment, you would store these keys in environment variables
-const EMAILJS_SERVICE_ID = "service_id"; // Replace with your EmailJS service ID
-const EMAILJS_TEMPLATE_ID = "template_id"; // Replace with your EmailJS template ID  
-const EMAILJS_USER_ID = "user_id"; // Replace with your EmailJS user ID
+// Initialize EmailJS with the provided credentials
+const EMAILJS_SERVICE_ID = "service_rore4kq"; 
+const EMAILJS_TEMPLATE_ID = "template_v65mr9p";  
+const EMAILJS_USER_ID = "2wqmmBMETBdP48M1_"; 
 
 const ContactForm = () => {
   const [formData, setFormData] = useState({
@@ -105,14 +104,7 @@ const ContactForm = () => {
     setIsSubmitting(true);
     
     try {
-      // For development/demonstration purposes
-      // If EmailJS keys are not configured, we'll simulate success
-      if (EMAILJS_USER_ID === "user_id") {
-        console.log("EmailJS not configured. Simulating successful submission.");
-        await new Promise(resolve => setTimeout(resolve, 1500));
-      } else {
-        await sendEmail();
-      }
+      await sendEmail();
       
       toast({
         title: "Form submitted successfully!",
