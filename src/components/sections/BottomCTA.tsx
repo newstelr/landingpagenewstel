@@ -1,8 +1,61 @@
 
 import { Button } from "@/components/ui/button";
 import { ArrowRight, Star } from "lucide-react";
+import useEmblaCarousel from 'embla-carousel-react';
+import { useCallback, useEffect, useState } from "react";
+
+const logoImages = [
+  "/lovable-uploads/ac351c4a-1998-410f-b459-7000031fc568.png", // Learnerbly
+  "/lovable-uploads/6dedccce-f350-4626-87e7-0fdacb83b18b.png", // Anthropologie
+  "/lovable-uploads/fb33121b-3ddb-4866-b0f5-5f6dbbefdcbf.png", // Punkt
+  "/lovable-uploads/b5b646f6-ef6f-4675-9e14-99d36e4d7b84.png", // DICE
+  "/lovable-uploads/5d049496-23f8-40a1-ad60-a3502c8625fe.png", // BLOOM & WILD
+  "/lovable-uploads/710d0894-444f-4c58-bfb1-5727dab1b5bb.png", // URBAN OUTFITTERS
+  "/lovable-uploads/b6c78906-c711-4072-9d1a-d2d8d1ca250b.png", // NordicTrack
+  "/lovable-uploads/7f08cf46-feea-4821-a3b7-60755226e117.png", // OnBuy.com
+];
 
 const BottomCTA = () => {
+  const [emblaRef, emblaApi] = useEmblaCarousel({ loop: true, align: "center" });
+  const [prevBtnEnabled, setPrevBtnEnabled] = useState(false);
+  const [nextBtnEnabled, setNextBtnEnabled] = useState(false);
+
+  const scrollPrev = useCallback(() => {
+    if (emblaApi) emblaApi.scrollPrev();
+  }, [emblaApi]);
+
+  const scrollNext = useCallback(() => {
+    if (emblaApi) emblaApi.scrollNext();
+  }, [emblaApi]);
+
+  const onSelect = useCallback(() => {
+    if (!emblaApi) return;
+    setPrevBtnEnabled(emblaApi.canScrollPrev());
+    setNextBtnEnabled(emblaApi.canScrollNext());
+  }, [emblaApi]);
+
+  useEffect(() => {
+    if (!emblaApi) return;
+    onSelect();
+    emblaApi.on("select", onSelect);
+    emblaApi.on("reInit", onSelect);
+
+    // Auto-scroll every 3 seconds
+    const autoplay = setInterval(() => {
+      if (emblaApi.canScrollNext()) {
+        emblaApi.scrollNext();
+      } else {
+        emblaApi.scrollTo(0);
+      }
+    }, 3000);
+
+    return () => {
+      emblaApi.off("select", onSelect);
+      emblaApi.off("reInit", onSelect);
+      clearInterval(autoplay);
+    };
+  }, [emblaApi, onSelect]);
+
   return (
     <div className="bg-gradient-to-r from-blue-50 to-pink-50 py-20 border-t border-gray-100">
       <div className="container mx-auto px-4">
@@ -33,6 +86,27 @@ const BottomCTA = () => {
             <div className="flex items-start gap-2">
               <div className="text-coral mt-1">✓</div>
               <div>24/7 availability</div>
+            </div>
+          </div>
+
+          {/* Client Logo Carousel */}
+          <div className="w-full my-8">
+            <p className="text-navy font-semibold mb-6">Trusted by industry leaders</p>
+            <div className="overflow-hidden" ref={emblaRef}>
+              <div className="flex">
+                {logoImages.map((src, index) => (
+                  <div 
+                    key={index} 
+                    className="flex-[0_0_25%] min-w-0 px-4 flex items-center justify-center"
+                  >
+                    <img 
+                      src={src} 
+                      alt={`Client logo ${index + 1}`} 
+                      className="h-12 md:h-16 object-contain filter grayscale hover:grayscale-0 transition-all duration-300"
+                    />
+                  </div>
+                ))}
+              </div>
             </div>
           </div>
           
