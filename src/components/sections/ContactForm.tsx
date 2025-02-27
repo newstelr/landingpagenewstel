@@ -127,13 +127,13 @@ const ContactForm = () => {
 
   return (
     <div className="container mx-auto px-4 -mt-40 mb-24">
-      <div className="rounded-xl shadow-2xl p-8 max-w-2xl mx-auto bg-gradient-to-br from-white to-gray-50 border-2 border-coral/20">
-        <h3 className="text-2xl font-bold text-navy mb-6 text-center">Get Your Free Consultation</h3>
-        <form onSubmit={handleSubmit} className="space-y-6">
+      <div className="rounded-xl shadow-2xl p-4 sm:p-8 max-w-2xl mx-auto bg-gradient-to-br from-white to-gray-50 border-2 border-coral/20">
+        <h3 className="text-xl sm:text-2xl font-bold text-navy mb-4 sm:mb-6 text-center">Get Your Free Consultation</h3>
+        <form onSubmit={handleSubmit} className="space-y-4 sm:space-y-6">
           <div>
             <Input
               placeholder="Your Name"
-              className={`w-full p-4 rounded-lg border-2 ${errors.name ? 'border-red-500' : 'border-gray-200'} focus:border-coral/50 focus:ring-coral/30 transition-colors`}
+              className={`w-full p-3 sm:p-4 rounded-lg border-2 ${errors.name ? 'border-red-500' : 'border-gray-200'} focus:border-coral/50 focus:ring-coral/30 transition-colors text-base`}
               value={formData.name}
               onChange={(e) => setFormData({ ...formData, name: e.target.value })}
               disabled={isSubmitting}
@@ -146,7 +146,7 @@ const ContactForm = () => {
             <Input
               type="email"
               placeholder="Business Email"
-              className={`w-full p-4 rounded-lg border-2 ${errors.email ? 'border-red-500' : 'border-gray-200'} focus:border-coral/50 focus:ring-coral/30 transition-colors`}
+              className={`w-full p-3 sm:p-4 rounded-lg border-2 ${errors.email ? 'border-red-500' : 'border-gray-200'} focus:border-coral/50 focus:ring-coral/30 transition-colors text-base`}
               value={formData.email}
               onChange={(e) => setFormData({ ...formData, email: e.target.value })}
               disabled={isSubmitting}
@@ -158,7 +158,7 @@ const ContactForm = () => {
           <div>
             <Input
               placeholder="Phone Number"
-              className={`w-full p-4 rounded-lg border-2 ${errors.phone ? 'border-red-500' : 'border-gray-200'} focus:border-coral/50 focus:ring-coral/30 transition-colors`}
+              className={`w-full p-3 sm:p-4 rounded-lg border-2 ${errors.phone ? 'border-red-500' : 'border-gray-200'} focus:border-coral/50 focus:ring-coral/30 transition-colors text-base`}
               value={formData.phone}
               onChange={(e) => setFormData({ ...formData, phone: e.target.value })}
               disabled={isSubmitting}
@@ -170,7 +170,7 @@ const ContactForm = () => {
           <div>
             <Textarea
               placeholder="Tell us about your customer service needs"
-              className={`w-full p-4 rounded-lg border-2 ${errors.message ? 'border-red-500' : 'border-gray-200'} focus:border-coral/50 focus:ring-coral/30 transition-colors`}
+              className={`w-full p-3 sm:p-4 rounded-lg border-2 ${errors.message ? 'border-red-500' : 'border-gray-200'} focus:border-coral/50 focus:ring-coral/30 transition-colors min-h-[100px] sm:min-h-[120px] text-base`}
               value={formData.message}
               onChange={(e) => setFormData({ ...formData, message: e.target.value })}
               disabled={isSubmitting}
@@ -181,7 +181,7 @@ const ContactForm = () => {
           
           <Button
             type="submit"
-            className="w-full bg-coral hover:bg-coral-dark text-white py-6 rounded-lg text-lg font-semibold transition-all duration-300 shadow-lg hover:shadow-xl"
+            className="w-full bg-coral hover:bg-coral-dark text-white py-4 sm:py-6 rounded-lg text-base sm:text-lg font-semibold transition-all duration-300 shadow-lg hover:shadow-xl"
             disabled={isSubmitting}
           >
             {isSubmitting ? (
