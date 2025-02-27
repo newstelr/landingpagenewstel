@@ -4,6 +4,7 @@ import { X } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { useToast } from "@/hooks/use-toast";
+import emailjs from "emailjs-com";
 
 interface ExitPopupProps {
   onClose: () => void;
@@ -14,7 +15,7 @@ export const ExitPopup = ({ onClose }: ExitPopupProps) => {
   const [isSubmitting, setIsSubmitting] = useState(false);
   const { toast } = useToast();
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     if (!email || !/\S+@\S+\.\S+/.test(email)) {
       toast({
@@ -26,16 +27,37 @@ export const ExitPopup = ({ onClose }: ExitPopupProps) => {
 
     setIsSubmitting(true);
     
-    // Here you would typically send the email to your backend or email service
-    // For demo purposes, we'll just simulate a successful submission
-    setTimeout(() => {
+    try {
+      // Prepare template parameters for EmailJS
+      const templateParams = {
+        email: email,
+        message: "Customer requested 10% discount via exit popup",
+        source: "Exit Popup Form",
+      };
+
+      // Send email using EmailJS
+      await emailjs.send(
+        "service_6z4q337", // Replace with your EmailJS service ID
+        "template_hc5ierc", // Replace with your EmailJS template ID
+        templateParams,
+        "NbJTBJpbXZRiSPBw-" // Replace with your EmailJS public key
+      );
+
       toast({
         title: "Thank you!",
         description: "Your exclusive discount will be sent to your email!",
       });
       setIsSubmitting(false);
       onClose();
-    }, 1000);
+    } catch (error) {
+      console.error("Error sending email:", error);
+      toast({
+        title: "Something went wrong",
+        description: "Please try again later.",
+        variant: "destructive",
+      });
+      setIsSubmitting(false);
+    }
   };
 
   return (
