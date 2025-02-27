@@ -73,7 +73,7 @@ const BottomCTA = () => {
                     <img 
                       src={src} 
                       alt={`Client logo ${index + 1}`} 
-                      className="h-12 md:h-16 object-contain filter grayscale hover:grayscale-0 transition-all duration-300"
+                      className="h-12 md:h-16 object-contain transition-all duration-300"
                     />
                   </div>
                 ))}
