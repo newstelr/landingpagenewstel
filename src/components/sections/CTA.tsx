@@ -3,7 +3,7 @@ import { Button } from "@/components/ui/button";
 
 const CTA = () => {
   return (
-    <div className="bg-navy py-24">
+    <div className="bg-white py-16">
       <div className="container mx-auto px-4">
         <div className="flex justify-center">
           <Button
