@@ -5,7 +5,7 @@ const Footer = () => {
   return (
     <footer className="bg-navy text-white pt-24 pb-12">
       <div className="container mx-auto px-4">
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-8 mb-12 items-center justify-center">
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-8 mb-12 items-start justify-center">
           <div className="flex flex-col items-start">
             <h3 className="font-bold mb-4">Legal</h3>
             <ul className="space-y-2">
@@ -20,7 +20,7 @@ const Footer = () => {
               </li>
             </ul>
           </div>
-          <div className="flex flex-col items-start md:items-center">
+          <div className="flex flex-col items-start">
             <h3 className="font-bold mb-4">Company</h3>
             <p>
               Newstel GmbH<br />
