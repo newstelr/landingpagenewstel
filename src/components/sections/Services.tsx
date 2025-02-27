@@ -1,5 +1,6 @@
 
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
+import { Button } from "@/components/ui/button";
 import { Clock, Users, Globe, Headphones, ShoppingCart, TrendingUp } from "lucide-react";
 
 const Services = () => {
@@ -49,7 +50,7 @@ const Services = () => {
         </div>
 
         {/* Services */}
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-8 mb-16">
           {[
             {
               icon: Headphones,
@@ -79,6 +80,19 @@ const Services = () => {
               </CardContent>
             </Card>
           ))}
+        </div>
+
+        {/* CTA Button */}
+        <div className="text-center mt-8">
+          <Button
+            className="bg-coral hover:bg-coral-dark text-white px-8 py-6 rounded-full text-lg transition-all duration-300 hover:scale-105"
+            onClick={() => {
+              const form = document.querySelector('form');
+              form?.scrollIntoView({ behavior: 'smooth' });
+            }}
+          >
+            Get Your Free Quote Today
+          </Button>
         </div>
       </div>
     </div>
