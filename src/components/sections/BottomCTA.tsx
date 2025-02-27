@@ -95,10 +95,10 @@ const BottomCTA = () => {
               <Star className="fill-yellow-500" size={20} />
             </div>
             
-            <h2 className="text-3xl md:text-4xl font-bold text-navy animate-fade-up">Ready to Elevate Your Customer Service?</h2>
+            <h2 className="text-3xl md:text-4xl font-bold text-navy animate-fade-up">Ready to Improve Your Customer Service?</h2>
             
             <p className="text-gray-600 text-lg md:text-xl">
-              Join hundreds of businesses that have transformed their customer support with our UK-based solutions.
+              Join hundreds of businesses that have improved their customer support with our UK-based solutions.
             </p>
             
             <div className="flex flex-col md:flex-row gap-4 items-center justify-center text-left text-gray-700 my-2">
@@ -131,7 +131,7 @@ const BottomCTA = () => {
                   }
                 }}
               >
-                Transform Your Support Today <ArrowRight className="ml-2" size={18} />
+                Improve Your Support Today <ArrowRight className="ml-2" size={18} />
               </Button>
             </div>
             

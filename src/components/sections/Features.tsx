@@ -16,7 +16,7 @@ const Features = () => {
             },
             {
               title: "40% Cost Reduction",
-              subtitle: "Without Compromising Quality",
+              subtitle: "Without Reducing Quality",
             },
           ].map((feature, index) => (
             <div
