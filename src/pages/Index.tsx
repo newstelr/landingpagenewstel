@@ -8,12 +8,6 @@ import CTA from "@/components/sections/CTA";
 import Footer from "@/components/sections/Footer";
 
 const navigationLinks = [
-  { text: "Why Choose Us?", href: "/why-choose-us" },
-  { text: "Our Services", href: "/services" },
-  { text: "Technology", href: "/technology" },
-  { text: "About Us", href: "/about" },
-  { text: "Case Studies", href: "/case-studies" },
-  { text: "Newstel Insights", href: "/insights" },
   { text: "Contact", href: "/contact" },
 ];
 
