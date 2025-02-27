@@ -5,7 +5,6 @@ import ContactForm from "@/components/sections/ContactForm";
 import Features from "@/components/sections/Features";
 import Services from "@/components/sections/Services";
 import CTA from "@/components/sections/CTA";
-import SecondCTA from "@/components/sections/SecondCTA";
 import Footer from "@/components/sections/Footer";
 
 const navigationLinks = [
@@ -19,7 +18,6 @@ const Index = () => {
       <Hero />
       <ContactForm />
       <Features />
-      <SecondCTA />
       <CTA />
       <Services />
       <Footer />
