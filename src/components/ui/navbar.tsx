@@ -33,16 +33,7 @@ export function Navbar({ links, user }: NavbarProps) {
     <nav className="bg-navy py-4 px-6 sticky top-0 z-50">
       <div className="container mx-auto">
         <div className="flex items-center justify-between">
-          {/* Logo */}
-          <Link to="/" className="flex items-center">
-            <img
-              src="/lovable-uploads/f850fee0-2a51-4ae3-8743-c7fdd9031b3c.png"
-              alt="Newstel Worldwide"
-              className="h-12 w-auto"
-            />
-          </Link>
-
-          {/* Desktop Navigation */}
+          {/* Navigation Links - Now on the left */}
           <div className="hidden md:flex items-center space-x-8">
             {links.map((link) => (
               <Link
@@ -54,6 +45,15 @@ export function Navbar({ links, user }: NavbarProps) {
               </Link>
             ))}
           </div>
+          
+          {/* Logo - Now in the middle */}
+          <Link to="/" className="flex items-center mx-auto md:mx-0">
+            <img
+              src="/lovable-uploads/f850fee0-2a51-4ae3-8743-c7fdd9031b3c.png"
+              alt="Newstel Worldwide"
+              className="h-12 w-auto"
+            />
+          </Link>
 
           {/* Auth/User Section */}
           <div className="hidden md:flex items-center space-x-4">
