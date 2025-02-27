@@ -18,10 +18,10 @@ const Index = () => {
       <Navbar links={navigationLinks} />
       <Hero />
       <ContactForm />
+      <BottomCTA />
       <Features />
       <CTA />
       <Services />
-      <BottomCTA />
       <Footer />
     </div>
   );
