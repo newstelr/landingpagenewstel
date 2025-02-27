@@ -10,13 +10,13 @@ const Footer = () => {
             <h3 className="font-bold mb-4">Legal</h3>
             <ul className="space-y-2">
               <li>
-                <Link to="/privacy-policy" className="hover:text-coral transition-colors">Privacy Policy</Link>
+                <Link to="/privacy-policy" className="hover:text-coral transition-colors" target="_blank" rel="noopener noreferrer">Privacy Policy</Link>
               </li>
               <li>
-                <Link to="/terms-of-service" className="hover:text-coral transition-colors">Terms of Service</Link>
+                <Link to="/terms-of-service" className="hover:text-coral transition-colors" target="_blank" rel="noopener noreferrer">Terms of Service</Link>
               </li>
               <li>
-                <Link to="/cookie-policy" className="hover:text-coral transition-colors">Cookie Policy</Link>
+                <Link to="/cookie-policy" className="hover:text-coral transition-colors" target="_blank" rel="noopener noreferrer">Cookie Policy</Link>
               </li>
             </ul>
           </div>
