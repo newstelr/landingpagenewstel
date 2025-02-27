@@ -137,6 +137,7 @@ const ContactForm = () => {
               value={formData.name}
               onChange={(e) => setFormData({ ...formData, name: e.target.value })}
               disabled={isSubmitting}
+              required
             />
             {errors.name && <p className="text-red-500 text-sm mt-1">{errors.name}</p>}
           </div>
@@ -149,6 +150,7 @@ const ContactForm = () => {
               value={formData.email}
               onChange={(e) => setFormData({ ...formData, email: e.target.value })}
               disabled={isSubmitting}
+              required
             />
             {errors.email && <p className="text-red-500 text-sm mt-1">{errors.email}</p>}
           </div>
@@ -160,6 +162,7 @@ const ContactForm = () => {
               value={formData.phone}
               onChange={(e) => setFormData({ ...formData, phone: e.target.value })}
               disabled={isSubmitting}
+              required
             />
             {errors.phone && <p className="text-red-500 text-sm mt-1">{errors.phone}</p>}
           </div>
@@ -171,6 +174,7 @@ const ContactForm = () => {
               value={formData.message}
               onChange={(e) => setFormData({ ...formData, message: e.target.value })}
               disabled={isSubmitting}
+              required
             />
             {errors.message && <p className="text-red-500 text-sm mt-1">{errors.message}</p>}
           </div>
