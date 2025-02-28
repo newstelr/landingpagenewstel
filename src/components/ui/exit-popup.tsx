@@ -31,7 +31,7 @@ export const ExitPopup = ({ onClose }: ExitPopupProps) => {
       // Prepare template parameters for EmailJS
       const templateParams = {
         email: email,
-        message: "Customer requested 10% discount via exit popup",
+        message: "Customer requested the call center selection guide via exit popup",
         source: "Exit Popup Form",
       };
 
@@ -45,7 +45,7 @@ export const ExitPopup = ({ onClose }: ExitPopupProps) => {
 
       toast({
         title: "Thank you!",
-        description: "Your exclusive discount will be sent to your email!",
+        description: "Your guide on choosing the right call center service will be sent to your email!",
       });
       setIsSubmitting(false);
       onClose();
@@ -75,7 +75,7 @@ export const ExitPopup = ({ onClose }: ExitPopupProps) => {
         
         <div className="p-6 sm:p-8">
           <div className="mb-4 bg-coral/10 text-coral font-semibold px-3 py-1 rounded-full text-sm inline-block">
-            Special Offer
+            Free Resource
           </div>
           
           <h3 className="text-2xl font-bold text-navy mb-2">
@@ -83,7 +83,7 @@ export const ExitPopup = ({ onClose }: ExitPopupProps) => {
           </h3>
           
           <p className="text-gray-600 mb-6">
-            Subscribe now and get <span className="font-bold text-coral">10% OFF</span> your first month of UK-based customer service.
+            Leave your email and we'll send you our <span className="font-bold text-coral">comprehensive guide</span> on how to choose the right call center service for your business.
           </p>
           
           <form onSubmit={handleSubmit} className="space-y-4">
@@ -101,7 +101,7 @@ export const ExitPopup = ({ onClose }: ExitPopupProps) => {
               className="w-full bg-coral hover:bg-coral-dark text-white py-3 rounded-lg font-semibold transition-all duration-300"
               disabled={isSubmitting}
             >
-              {isSubmitting ? "Sending..." : "Get My 10% Discount"}
+              {isSubmitting ? "Sending..." : "Get My Free Guide"}
             </Button>
           </form>
           
