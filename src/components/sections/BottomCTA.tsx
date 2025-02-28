@@ -95,24 +95,24 @@ const BottomCTA = () => {
               <Star className="fill-yellow-500" size={20} />
             </div>
             
-            <h2 className="text-3xl md:text-4xl font-bold text-navy animate-fade-up">Ready to Improve Your Customer Service?</h2>
+            <h2 className="text-3xl md:text-4xl font-bold text-navy animate-fade-up">Ready to Transform Your Business Operations?</h2>
             
             <p className="text-gray-600 text-lg md:text-xl">
-              Join hundreds of businesses that have improved their customer support with our UK-based solutions.
+              Join hundreds of businesses that have streamlined operations and reduced costs with our comprehensive UK-based BPO solutions.
             </p>
             
             <div className="flex flex-col md:flex-row gap-4 items-center justify-center text-left text-gray-700 my-2">
               <div className="flex items-start gap-2">
                 <div className="text-coral mt-1">✓</div>
-                <div>96% customer satisfaction</div>
+                <div>40% cost reduction</div>
               </div>
               <div className="flex items-start gap-2">
                 <div className="text-coral mt-1">✓</div>
-                <div>UK-based support team</div>
+                <div>UK-based expert teams</div>
               </div>
               <div className="flex items-start gap-2">
                 <div className="text-coral mt-1">✓</div>
-                <div>24/7 availability</div>
+                <div>Tailored BPO solutions</div>
               </div>
             </div>
             
@@ -131,12 +131,12 @@ const BottomCTA = () => {
                   }
                 }}
               >
-                Improve Your Support Today <ArrowRight className="ml-2" size={18} />
+                Schedule Your BPO Consultation <ArrowRight className="ml-2" size={18} />
               </Button>
             </div>
             
             <div className="text-sm text-gray-500 italic mt-2">
-              "Our customer response times improved by 45% within the first month." — Sarah J., Operations Director
+              "Working with their team transformed our operations and reduced our costs by 37% in the first quarter." — James T., CEO
             </div>
           </div>
         </div>
