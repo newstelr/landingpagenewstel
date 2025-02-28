@@ -7,16 +7,16 @@ const BPOFeatures = () => {
         <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
           {[
             {
-              title: "UK-Based BPO Team",
-              subtitle: "Native English-Speaking BPO Professionals",
+              title: "Strategic Focus",
+              subtitle: "Focus on core business while we handle the rest",
             },
             {
-              title: "24/7 BPO Support",
-              subtitle: "Round-the-Clock UK BPO Coverage",
+              title: "Cost Efficiency",
+              subtitle: "Reduce operational costs by up to 40%",
             },
             {
-              title: "40% Cost Reduction",
-              subtitle: "Efficient BPO Service Delivery",
+              title: "Specialized Expertise",
+              subtitle: "Access to industry professionals and advanced technologies",
             },
           ].map((feature, index) => (
             <div
