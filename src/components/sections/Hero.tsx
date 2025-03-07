@@ -6,7 +6,7 @@ const Hero = () => {
     <div className="bg-navy">
       <div className="container mx-auto px-4 pt-24 pb-64">
         <h1 className="text-4xl md:text-5xl font-bold text-white text-center animate-fade-up opacity-0 [--delay:200ms]">
-          Premier Outsourced Customer Service Solutions
+          Outsourced Customer Service Solutions
         </h1>
         <p className="mt-6 text-lg text-gray-300 text-center max-w-2xl mx-auto animate-fade-up opacity-0 [--delay:400ms]">
           Improve your customer experience with our outsourced customer service team. Cut costs significantly while keeping exceptional quality of service.
