@@ -127,20 +127,20 @@ const ContactForm = () => {
 
   return (
     <div className="container mx-auto px-4 -mt-40 mb-24 relative z-10">
-      <div className="rounded-xl shadow-lg p-6 sm:p-10 max-w-2xl mx-auto bg-white border border-purple-200 transition-all duration-300 hover:shadow-xl">
+      <div className="rounded-xl shadow-lg p-6 sm:p-10 max-w-2xl mx-auto bg-white border border-coral/20 transition-all duration-300 hover:shadow-xl">
         <h3 className="text-2xl sm:text-3xl font-bold text-navy mb-2 text-center">Get Your Free Consultation</h3>
         <p className="text-center text-gray-600 mb-6">Our experts are ready to analyze your needs and provide solutions</p>
         
         <div className="flex justify-center space-x-4 mb-6">
-          <div className="flex items-center text-purple-700">
+          <div className="flex items-center text-coral">
             <CheckCircle className="h-4 w-4 mr-1" />
             <span className="text-xs">100% Free</span>
           </div>
-          <div className="flex items-center text-purple-700">
+          <div className="flex items-center text-coral">
             <Lock className="h-4 w-4 mr-1" />
             <span className="text-xs">Secure Form</span>
           </div>
-          <div className="flex items-center text-purple-700">
+          <div className="flex items-center text-coral">
             <Shield className="h-4 w-4 mr-1" />
             <span className="text-xs">Privacy Protected</span>
           </div>
@@ -151,7 +151,7 @@ const ContactForm = () => {
             <label className="text-sm font-medium text-gray-700 mb-1 block">Your Name</label>
             <Input
               placeholder="John Smith"
-              className={`w-full p-3 sm:p-4 rounded-lg border-2 ${errors.name ? 'border-red-500' : 'border-purple-100'} focus:border-purple-400 focus:ring-purple-300 transition-colors text-base group-hover:border-purple-300 bg-white`}
+              className={`w-full p-3 sm:p-4 rounded-lg border-2 ${errors.name ? 'border-red-500' : 'border-coral/20'} focus:border-coral focus:ring-coral/30 transition-colors text-base group-hover:border-coral/40 bg-white`}
               value={formData.name}
               onChange={(e) => setFormData({ ...formData, name: e.target.value })}
               disabled={isSubmitting}
@@ -165,7 +165,7 @@ const ContactForm = () => {
             <Input
               type="email"
               placeholder="you@company.com"
-              className={`w-full p-3 sm:p-4 rounded-lg border-2 ${errors.email ? 'border-red-500' : 'border-purple-100'} focus:border-purple-400 focus:ring-purple-300 transition-colors text-base group-hover:border-purple-300 bg-white`}
+              className={`w-full p-3 sm:p-4 rounded-lg border-2 ${errors.email ? 'border-red-500' : 'border-coral/20'} focus:border-coral focus:ring-coral/30 transition-colors text-base group-hover:border-coral/40 bg-white`}
               value={formData.email}
               onChange={(e) => setFormData({ ...formData, email: e.target.value })}
               disabled={isSubmitting}
@@ -178,7 +178,7 @@ const ContactForm = () => {
             <label className="text-sm font-medium text-gray-700 mb-1 block">Phone Number</label>
             <Input
               placeholder="+1 (555) 123-4567"
-              className={`w-full p-3 sm:p-4 rounded-lg border-2 ${errors.phone ? 'border-red-500' : 'border-purple-100'} focus:border-purple-400 focus:ring-purple-300 transition-colors text-base group-hover:border-purple-300 bg-white`}
+              className={`w-full p-3 sm:p-4 rounded-lg border-2 ${errors.phone ? 'border-red-500' : 'border-coral/20'} focus:border-coral focus:ring-coral/30 transition-colors text-base group-hover:border-coral/40 bg-white`}
               value={formData.phone}
               onChange={(e) => setFormData({ ...formData, phone: e.target.value })}
               disabled={isSubmitting}
@@ -191,7 +191,7 @@ const ContactForm = () => {
             <label className="text-sm font-medium text-gray-700 mb-1 block">Tell us about your needs</label>
             <Textarea
               placeholder="Describe your customer service requirements..."
-              className={`w-full p-3 sm:p-4 rounded-lg border-2 ${errors.message ? 'border-red-500' : 'border-purple-100'} focus:border-purple-400 focus:ring-purple-300 transition-colors min-h-[100px] sm:min-h-[120px] text-base group-hover:border-purple-300 bg-white`}
+              className={`w-full p-3 sm:p-4 rounded-lg border-2 ${errors.message ? 'border-red-500' : 'border-coral/20'} focus:border-coral focus:ring-coral/30 transition-colors min-h-[100px] sm:min-h-[120px] text-base group-hover:border-coral/40 bg-white`}
               value={formData.message}
               onChange={(e) => setFormData({ ...formData, message: e.target.value })}
               disabled={isSubmitting}
@@ -202,7 +202,7 @@ const ContactForm = () => {
           
           <Button
             type="submit"
-            className="w-full bg-purple-600 hover:bg-purple-700 text-white py-4 sm:py-6 rounded-lg text-base sm:text-lg font-semibold transition-all duration-300 shadow-md hover:shadow-lg"
+            className="w-full bg-coral hover:bg-coral-dark text-white py-4 sm:py-6 rounded-lg text-base sm:text-lg font-semibold transition-all duration-300 shadow-md hover:shadow-lg"
             disabled={isSubmitting}
           >
             {isSubmitting ? (
@@ -216,15 +216,15 @@ const ContactForm = () => {
           </Button>
           
           <div className="flex items-center justify-center mt-4 text-xs text-gray-500">
-            <Lock className="h-3 w-3 mr-1 text-purple-600" />
+            <Lock className="h-3 w-3 mr-1 text-coral" />
             <p>
               Your information is secure and will never be shared with third parties.
-              By submitting, you agree to our <a href="/privacy-policy" className="text-purple-600 hover:underline">privacy policy</a>.
+              By submitting, you agree to our <a href="/privacy-policy" className="text-coral hover:underline">privacy policy</a>.
             </p>
           </div>
           
-          <div className="mt-4 bg-purple-50 p-3 rounded-lg border border-purple-100 text-xs text-gray-600">
-            <p className="font-medium text-purple-800 mb-1">What happens next?</p>
+          <div className="mt-4 bg-coral/5 p-3 rounded-lg border border-coral/10 text-xs text-gray-600">
+            <p className="font-medium text-coral mb-1">What happens next?</p>
             <ol className="list-decimal list-inside space-y-1 pl-1">
               <li>Our consultant will contact you within 24 hours</li>
               <li>Brief discussion about your business needs</li>
@@ -238,3 +238,4 @@ const ContactForm = () => {
 };
 
 export default ContactForm;
+
