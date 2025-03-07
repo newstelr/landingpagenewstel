@@ -12,7 +12,7 @@ const Services = () => {
             Improve Your Customer Experience
           </h2>
           <p className="text-lg text-gray-600">
-            Ready to boost your customer service? Our UK-based team provides excellent support that grows with your business.
+            Ready to boost your customer service? Our team provides excellent support that grows with your business.
           </p>
         </div>
 
