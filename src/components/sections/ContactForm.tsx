@@ -1,12 +1,13 @@
 
 import { useState, useEffect } from "react";
 import { Button } from "@/components/ui/button";
-import { Input } from "@/components/ui/input";
-import { Textarea } from "@/components/ui/textarea";
 import { useNavigate } from "react-router-dom";
 import { useToast } from "@/hooks/use-toast";
-import { Loader2, Lock, Shield, CheckCircle } from "lucide-react";
+import { Loader2 } from "lucide-react";
 import emailjs from "emailjs-com";
+import FormInput from "./form/FormInput";
+import FormHeader from "./form/FormHeader";
+import FormFooter from "./form/FormFooter";
 
 // Initialize EmailJS with the provided credentials
 const EMAILJS_SERVICE_ID = "service_rore4kq"; 
@@ -69,24 +70,16 @@ const ContactForm = () => {
         }
       );
       
-      // In a real implementation, you might have a separate template for confirmation emails
-      // This would send a confirmation email to the customer
-      /*
-      await emailjs.send(
-        EMAILJS_SERVICE_ID,
-        "confirmation_template_id",
-        {
-          to_name: formData.name,
-          to_email: formData.email,
-        }
-      );
-      */
-      
       return true;
     } catch (error) {
       console.error("Error sending email:", error);
       throw error;
     }
+  };
+
+  const handleInputChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
+    const { name, value } = e.target;
+    setFormData({ ...formData, [name]: value });
   };
 
   const handleSubmit = async (e: React.FormEvent) => {
@@ -128,77 +121,50 @@ const ContactForm = () => {
   return (
     <div className="container mx-auto px-4 -mt-40 mb-24 relative z-10">
       <div className="rounded-xl shadow-lg p-6 sm:p-10 max-w-2xl mx-auto bg-white border border-coral/20 transition-all duration-300 hover:shadow-xl">
-        <h3 className="text-2xl sm:text-3xl font-bold text-navy mb-2 text-center">Get Your Free Consultation</h3>
-        <p className="text-center text-gray-600 mb-6">Our experts are ready to analyze your needs and provide solutions</p>
-        
-        <div className="flex justify-center space-x-4 mb-6">
-          <div className="flex items-center text-coral">
-            <CheckCircle className="h-4 w-4 mr-1" />
-            <span className="text-xs">100% Free</span>
-          </div>
-          <div className="flex items-center text-coral">
-            <Lock className="h-4 w-4 mr-1" />
-            <span className="text-xs">Secure Form</span>
-          </div>
-          <div className="flex items-center text-coral">
-            <Shield className="h-4 w-4 mr-1" />
-            <span className="text-xs">Privacy Protected</span>
-          </div>
-        </div>
+        <FormHeader />
         
         <form onSubmit={handleSubmit} className="space-y-5 sm:space-y-6">
-          <div className="group">
-            <label className="text-sm font-medium text-gray-700 mb-1 block">Your Name</label>
-            <Input
-              placeholder="John Smith"
-              className={`w-full p-3 sm:p-4 rounded-lg border-2 ${errors.name ? 'border-red-500' : 'border-coral/20'} focus:border-coral focus:ring-coral/30 transition-colors text-base group-hover:border-coral/40 bg-white`}
-              value={formData.name}
-              onChange={(e) => setFormData({ ...formData, name: e.target.value })}
-              disabled={isSubmitting}
-              required
-            />
-            {errors.name && <p className="text-red-500 text-sm mt-1">{errors.name}</p>}
-          </div>
+          <FormInput
+            label="Your Name"
+            name="name"
+            placeholder="John Smith"
+            value={formData.name}
+            onChange={handleInputChange}
+            error={errors.name}
+            disabled={isSubmitting}
+          />
           
-          <div className="group">
-            <label className="text-sm font-medium text-gray-700 mb-1 block">Business Email</label>
-            <Input
-              type="email"
-              placeholder="you@company.com"
-              className={`w-full p-3 sm:p-4 rounded-lg border-2 ${errors.email ? 'border-red-500' : 'border-coral/20'} focus:border-coral focus:ring-coral/30 transition-colors text-base group-hover:border-coral/40 bg-white`}
-              value={formData.email}
-              onChange={(e) => setFormData({ ...formData, email: e.target.value })}
-              disabled={isSubmitting}
-              required
-            />
-            {errors.email && <p className="text-red-500 text-sm mt-1">{errors.email}</p>}
-          </div>
+          <FormInput
+            label="Business Email"
+            name="email"
+            type="email"
+            placeholder="you@company.com"
+            value={formData.email}
+            onChange={handleInputChange}
+            error={errors.email}
+            disabled={isSubmitting}
+          />
           
-          <div className="group">
-            <label className="text-sm font-medium text-gray-700 mb-1 block">Phone Number</label>
-            <Input
-              placeholder="+1 (555) 123-4567"
-              className={`w-full p-3 sm:p-4 rounded-lg border-2 ${errors.phone ? 'border-red-500' : 'border-coral/20'} focus:border-coral focus:ring-coral/30 transition-colors text-base group-hover:border-coral/40 bg-white`}
-              value={formData.phone}
-              onChange={(e) => setFormData({ ...formData, phone: e.target.value })}
-              disabled={isSubmitting}
-              required
-            />
-            {errors.phone && <p className="text-red-500 text-sm mt-1">{errors.phone}</p>}
-          </div>
+          <FormInput
+            label="Phone Number"
+            name="phone"
+            placeholder="+1 (555) 123-4567"
+            value={formData.phone}
+            onChange={handleInputChange}
+            error={errors.phone}
+            disabled={isSubmitting}
+          />
           
-          <div className="group">
-            <label className="text-sm font-medium text-gray-700 mb-1 block">Tell us about your needs</label>
-            <Textarea
-              placeholder="Describe your customer service requirements..."
-              className={`w-full p-3 sm:p-4 rounded-lg border-2 ${errors.message ? 'border-red-500' : 'border-coral/20'} focus:border-coral focus:ring-coral/30 transition-colors min-h-[100px] sm:min-h-[120px] text-base group-hover:border-coral/40 bg-white`}
-              value={formData.message}
-              onChange={(e) => setFormData({ ...formData, message: e.target.value })}
-              disabled={isSubmitting}
-              required
-            />
-            {errors.message && <p className="text-red-500 text-sm mt-1">{errors.message}</p>}
-          </div>
+          <FormInput
+            label="Tell us about your needs"
+            name="message"
+            placeholder="Describe your customer service requirements..."
+            value={formData.message}
+            onChange={handleInputChange}
+            error={errors.message}
+            disabled={isSubmitting}
+            isTextarea={true}
+          />
           
           <Button
             type="submit"
@@ -215,22 +181,7 @@ const ContactForm = () => {
             )}
           </Button>
           
-          <div className="flex items-center justify-center mt-4 text-xs text-gray-500">
-            <Lock className="h-3 w-3 mr-1 text-coral" />
-            <p>
-              Your information is secure and will never be shared with third parties.
-              By submitting, you agree to our <a href="/privacy-policy" className="text-coral hover:underline">privacy policy</a>.
-            </p>
-          </div>
-          
-          <div className="mt-4 bg-coral/5 p-3 rounded-lg border border-coral/10 text-xs text-gray-600">
-            <p className="font-medium text-coral mb-1">What happens next?</p>
-            <ol className="list-decimal list-inside space-y-1 pl-1">
-              <li>Our consultant will contact you within 24 hours</li>
-              <li>Brief discussion about your business needs</li>
-              <li>Custom proposal with pricing and solutions</li>
-            </ol>
-          </div>
+          <FormFooter />
         </form>
       </div>
     </div>
@@ -238,4 +189,3 @@ const ContactForm = () => {
 };
 
 export default ContactForm;
-
