@@ -1,5 +1,5 @@
 
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
 import { cn } from "@/lib/utils";
@@ -31,11 +31,32 @@ const FormInput: React.FC<FormInputProps> = ({
   autoFocus = false,
 }) => {
   const [isFocused, setIsFocused] = useState(false);
-  const { control, formState } = useFormContext();
+  const { control, formState, watch } = useFormContext();
   const fieldError = error || (formState.errors[name]?.message as string);
   
   const handleFocus = () => setIsFocused(true);
   const handleBlur = () => setIsFocused(false);
+
+  // Save form data to localStorage whenever it changes
+  const fieldValue = watch(name);
+  
+  useEffect(() => {
+    if (fieldValue !== undefined) {
+      try {
+        // Get existing form data from localStorage
+        const storedFormData = localStorage.getItem('contactFormData');
+        const formData = storedFormData ? JSON.parse(storedFormData) : {};
+        
+        // Update the specific field
+        formData[name] = fieldValue;
+        
+        // Save updated form data back to localStorage
+        localStorage.setItem('contactFormData', JSON.stringify(formData));
+      } catch (error) {
+        console.error("Error saving form data to localStorage:", error);
+      }
+    }
+  }, [fieldValue, name]);
 
   return (
     <div 

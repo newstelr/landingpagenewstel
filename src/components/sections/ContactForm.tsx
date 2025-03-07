@@ -32,6 +32,17 @@ const ContactForm = () => {
   const navigate = useNavigate();
   const { toast } = useToast();
   
+  // Load saved form data from localStorage
+  const getSavedFormData = (): Partial<FormValues> => {
+    try {
+      const savedData = localStorage.getItem('contactFormData');
+      return savedData ? JSON.parse(savedData) : {};
+    } catch (error) {
+      console.error("Error loading saved form data:", error);
+      return {};
+    }
+  };
+  
   const methods = useForm<FormValues>({
     resolver: zodResolver(formSchema),
     defaultValues: {
@@ -39,6 +50,7 @@ const ContactForm = () => {
       email: "",
       phone: "",
       message: "",
+      ...getSavedFormData(), // Merge saved data with default values
     },
     mode: "onBlur",
   });
@@ -74,6 +86,9 @@ const ContactForm = () => {
     
     try {
       await sendEmail(data);
+      
+      // Clear saved form data after successful submission
+      localStorage.removeItem('contactFormData');
       
       toast({
         title: "Form submitted successfully!",
