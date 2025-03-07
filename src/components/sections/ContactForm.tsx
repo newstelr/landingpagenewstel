@@ -8,65 +8,57 @@ import emailjs from "emailjs-com";
 import FormInput from "./form/FormInput";
 import FormHeader from "./form/FormHeader";
 import FormFooter from "./form/FormFooter";
+import { useForm, FormProvider } from "react-hook-form";
+import { zodResolver } from "@hookform/resolvers/zod";
+import { z } from "zod";
 
 // Initialize EmailJS with the provided credentials
 const EMAILJS_SERVICE_ID = "service_rore4kq"; 
 const EMAILJS_TEMPLATE_ID = "template_v65mr9p";  
 const EMAILJS_USER_ID = "2wqmmBMETBdP48M1_"; 
 
+// Define validation schema using Zod
+const formSchema = z.object({
+  name: z.string().min(1, "Name is required"),
+  email: z.string().min(1, "Email is required").email("Email is invalid"),
+  phone: z.string().min(1, "Phone number is required"),
+  message: z.string().min(1, "Please tell us about your needs"),
+});
+
+type FormValues = z.infer<typeof formSchema>;
+
 const ContactForm = () => {
-  const [formData, setFormData] = useState({
-    name: "",
-    email: "",
-    phone: "",
-    message: "",
-  });
   const [isSubmitting, setIsSubmitting] = useState(false);
-  const [errors, setErrors] = useState<Record<string, string>>({});
   const navigate = useNavigate();
   const { toast } = useToast();
+  
+  const methods = useForm<FormValues>({
+    resolver: zodResolver(formSchema),
+    defaultValues: {
+      name: "",
+      email: "",
+      phone: "",
+      message: "",
+    },
+    mode: "onBlur",
+  });
   
   // Initialize EmailJS
   useEffect(() => {
     emailjs.init(EMAILJS_USER_ID);
   }, []);
 
-  const validateForm = () => {
-    const newErrors: Record<string, string> = {};
-    
-    if (!formData.name.trim()) {
-      newErrors.name = "Name is required";
-    }
-    
-    if (!formData.email.trim()) {
-      newErrors.email = "Email is required";
-    } else if (!/\S+@\S+\.\S+/.test(formData.email)) {
-      newErrors.email = "Email is invalid";
-    }
-    
-    if (!formData.phone.trim()) {
-      newErrors.phone = "Phone number is required";
-    }
-    
-    if (!formData.message.trim()) {
-      newErrors.message = "Please tell us about your needs";
-    }
-    
-    setErrors(newErrors);
-    return Object.keys(newErrors).length === 0;
-  };
-
-  const sendEmail = async () => {
+  const sendEmail = async (data: FormValues) => {
     try {
       // Send email notification to admin
       await emailjs.send(
         EMAILJS_SERVICE_ID,
         EMAILJS_TEMPLATE_ID,
         {
-          from_name: formData.name,
-          from_email: formData.email,
-          from_phone: formData.phone,
-          message: formData.message,
+          from_name: data.name,
+          from_email: data.email,
+          from_phone: data.phone,
+          message: data.message,
         }
       );
       
@@ -77,27 +69,11 @@ const ContactForm = () => {
     }
   };
 
-  const handleInputChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
-    const { name, value } = e.target;
-    setFormData({ ...formData, [name]: value });
-  };
-
-  const handleSubmit = async (e: React.FormEvent) => {
-    e.preventDefault();
-    
-    if (!validateForm()) {
-      toast({
-        title: "Please check your information",
-        description: "There are some errors in your form submission.",
-        variant: "destructive",
-      });
-      return;
-    }
-    
+  const onSubmit = async (data: FormValues) => {
     setIsSubmitting(true);
     
     try {
-      await sendEmail();
+      await sendEmail(data);
       
       toast({
         title: "Form submitted successfully!",
@@ -123,66 +99,56 @@ const ContactForm = () => {
       <div className="rounded-xl shadow-lg p-6 sm:p-10 max-w-2xl mx-auto bg-white border border-coral/20 transition-all duration-300 hover:shadow-xl">
         <FormHeader />
         
-        <form onSubmit={handleSubmit} className="space-y-5 sm:space-y-6">
-          <FormInput
-            label="Your Name"
-            name="name"
-            placeholder="John Smith"
-            value={formData.name}
-            onChange={handleInputChange}
-            error={errors.name}
-            disabled={isSubmitting}
-          />
-          
-          <FormInput
-            label="Business Email"
-            name="email"
-            type="email"
-            placeholder="you@company.com"
-            value={formData.email}
-            onChange={handleInputChange}
-            error={errors.email}
-            disabled={isSubmitting}
-          />
-          
-          <FormInput
-            label="Phone Number"
-            name="phone"
-            placeholder="+1 (555) 123-4567"
-            value={formData.phone}
-            onChange={handleInputChange}
-            error={errors.phone}
-            disabled={isSubmitting}
-          />
-          
-          <FormInput
-            label="Tell us about your needs"
-            name="message"
-            placeholder="Describe your customer service requirements..."
-            value={formData.message}
-            onChange={handleInputChange}
-            error={errors.message}
-            disabled={isSubmitting}
-            isTextarea={true}
-          />
-          
-          <Button
-            type="submit"
-            className="w-full bg-coral hover:bg-coral-dark text-white py-4 sm:py-6 rounded-lg text-base sm:text-lg font-semibold transition-all duration-300 shadow-md hover:shadow-lg"
-            disabled={isSubmitting}
-          >
-            {isSubmitting ? (
-              <>
-                <Loader2 className="mr-2 h-4 w-4 animate-spin" />
-                Processing...
-              </>
-            ) : (
-              "Get Your Free Consultation Now"
-            )}
-          </Button>
-          
-          <FormFooter />
-        </form>
+        <FormProvider {...methods}>
+          <form onSubmit={methods.handleSubmit(onSubmit)} className="space-y-5 sm:space-y-6">
+            <FormInput
+              label="Your Name"
+              name="name"
+              placeholder="John Smith"
+              disabled={isSubmitting}
+            />
+            
+            <FormInput
+              label="Business Email"
+              name="email"
+              type="email"
+              placeholder="you@company.com"
+              disabled={isSubmitting}
+            />
+            
+            <FormInput
+              label="Phone Number"
+              name="phone"
+              placeholder="+1 (555) 123-4567"
+              disabled={isSubmitting}
+            />
+            
+            <FormInput
+              label="Tell us about your needs"
+              name="message"
+              placeholder="Describe your customer service requirements..."
+              disabled={isSubmitting}
+              isTextarea={true}
+            />
+            
+            <Button
+              type="submit"
+              className="w-full bg-coral hover:bg-coral-dark text-white py-4 sm:py-6 rounded-lg text-base sm:text-lg font-semibold transition-all duration-300 shadow-md hover:shadow-lg"
+              disabled={isSubmitting}
+            >
+              {isSubmitting ? (
+                <>
+                  <Loader2 className="mr-2 h-4 w-4 animate-spin" />
+                  Processing...
+                </>
+              ) : (
+                "Get Your Free Consultation Now"
+              )}
+            </Button>
+            
+            <FormFooter />
+          </form>
+        </FormProvider>
       </div>
     </div>
   );

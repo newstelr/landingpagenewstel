@@ -3,13 +3,12 @@ import React, { useState } from "react";
 import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
 import { cn } from "@/lib/utils";
+import { useFormContext, Controller } from "react-hook-form";
 
 interface FormInputProps {
   label: string;
   name: string;
   placeholder: string;
-  value: string;
-  onChange: (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => void;
   error?: string;
   disabled?: boolean;
   type?: string;
@@ -23,8 +22,6 @@ const FormInput: React.FC<FormInputProps> = ({
   label,
   name,
   placeholder,
-  value,
-  onChange,
   error,
   disabled = false,
   type = "text",
@@ -34,6 +31,8 @@ const FormInput: React.FC<FormInputProps> = ({
   autoFocus = false,
 }) => {
   const [isFocused, setIsFocused] = useState(false);
+  const { control, formState } = useFormContext();
+  const fieldError = error || (formState.errors[name]?.message as string);
   
   const handleFocus = () => setIsFocused(true);
   const handleBlur = () => setIsFocused(false);
@@ -56,48 +55,62 @@ const FormInput: React.FC<FormInputProps> = ({
         {required && <span className="text-coral ml-1">*</span>}
       </label>
       
-      {isTextarea ? (
-        <Textarea
-          placeholder={placeholder}
-          className={cn(
-            "w-full p-3 sm:p-4 rounded-lg border-2 transition-all duration-300",
-            error ? "border-red-500" : isFocused ? "border-coral" : "border-coral/20",
-            "focus:border-coral focus:ring-coral/30 min-h-[100px] sm:min-h-[120px]",
-            "text-base group-hover:border-coral/40 bg-white animate-fade-up"
-          )}
-          value={value}
-          onChange={onChange}
-          disabled={disabled}
-          required={required}
-          name={name}
-          onFocus={handleFocus}
-          onBlur={handleBlur}
-          autoFocus={autoFocus}
-        />
-      ) : (
-        <Input
-          type={type}
-          placeholder={placeholder}
-          className={cn(
-            "w-full p-3 sm:p-4 rounded-lg border-2 transition-all duration-300",
-            error ? "border-red-500" : isFocused ? "border-coral" : "border-coral/20",
-            "focus:border-coral focus:ring-coral/30 text-base",
-            "group-hover:border-coral/40 bg-white animate-fade-up"
-          )}
-          value={value}
-          onChange={onChange}
-          disabled={disabled}
-          required={required}
-          name={name}
-          onFocus={handleFocus}
-          onBlur={handleBlur}
-          autoFocus={autoFocus}
-        />
-      )}
+      <Controller
+        name={name}
+        control={control}
+        render={({ field }) => (
+          isTextarea ? (
+            <Textarea
+              {...field}
+              placeholder={placeholder}
+              className={cn(
+                "w-full p-3 sm:p-4 rounded-lg border-2 transition-all duration-300",
+                fieldError ? "border-red-500" : isFocused ? "border-coral" : "border-coral/20",
+                "focus:border-coral focus:ring-coral/30 min-h-[100px] sm:min-h-[120px]",
+                "text-base group-hover:border-coral/40 bg-white animate-fade-up"
+              )}
+              disabled={disabled}
+              required={required}
+              onFocus={(e) => {
+                handleFocus();
+                field.onBlur && field.onBlur();
+              }}
+              onBlur={(e) => {
+                handleBlur();
+                field.onBlur && field.onBlur();
+              }}
+              autoFocus={autoFocus}
+            />
+          ) : (
+            <Input
+              {...field}
+              type={type}
+              placeholder={placeholder}
+              className={cn(
+                "w-full p-3 sm:p-4 rounded-lg border-2 transition-all duration-300",
+                fieldError ? "border-red-500" : isFocused ? "border-coral" : "border-coral/20",
+                "focus:border-coral focus:ring-coral/30 text-base",
+                "group-hover:border-coral/40 bg-white animate-fade-up"
+              )}
+              disabled={disabled}
+              required={required}
+              onFocus={(e) => {
+                handleFocus();
+                field.onBlur && field.onBlur();
+              }}
+              onBlur={(e) => {
+                handleBlur();
+                field.onBlur && field.onBlur();
+              }}
+              autoFocus={autoFocus}
+            />
+          )
+        )}
+      />
       
-      {error && (
+      {fieldError && (
         <p className="text-red-500 text-sm mt-1 animate-fade-in">
-          {error}
+          {fieldError}
         </p>
       )}
     </div>
