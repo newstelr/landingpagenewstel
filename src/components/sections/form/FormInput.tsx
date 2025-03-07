@@ -1,9 +1,10 @@
-
 import React, { useState, useEffect } from "react";
 import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
 import { cn } from "@/lib/utils";
 import { useFormContext, Controller } from "react-hook-form";
+import { savePartialFormData } from "@/services/formService";
+import { debounce } from "lodash";
 
 interface FormInputProps {
   label: string;
@@ -37,8 +38,21 @@ const FormInput: React.FC<FormInputProps> = ({
   const handleFocus = () => setIsFocused(true);
   const handleBlur = () => setIsFocused(false);
 
-  // Save form data to localStorage whenever it changes
+  // Save form data to localStorage and Firebase whenever it changes
   const fieldValue = watch(name);
+  
+  // Create a debounced function for saving to Firebase to prevent excessive writes
+  const debouncedSaveToFirebase = debounce((name, value) => {
+    if (value !== undefined && value !== "") {
+      try {
+        // Create an object with the updated field
+        const fieldUpdate = { [name]: value };
+        savePartialFormData(fieldUpdate);
+      } catch (error) {
+        console.error("Error saving to Firebase:", error);
+      }
+    }
+  }, 1000); // 1 second debounce
   
   useEffect(() => {
     if (fieldValue !== undefined) {
@@ -52,11 +66,20 @@ const FormInput: React.FC<FormInputProps> = ({
         
         // Save updated form data back to localStorage
         localStorage.setItem('contactFormData', JSON.stringify(formData));
+        
+        // Save to Firebase with debounce (only if not empty)
+        if (fieldValue !== "") {
+          debouncedSaveToFirebase(name, fieldValue);
+        }
       } catch (error) {
-        console.error("Error saving form data to localStorage:", error);
+        console.error("Error saving form data:", error);
       }
     }
-  }, [fieldValue, name]);
+    
+    return () => {
+      debouncedSaveToFirebase.cancel();
+    };
+  }, [fieldValue, name, debouncedSaveToFirebase]);
 
   return (
     <div 

@@ -1,4 +1,3 @@
-
 import { useState, useEffect } from "react";
 import { Button } from "@/components/ui/button";
 import { useNavigate } from "react-router-dom";
@@ -11,13 +10,12 @@ import FormFooter from "./form/FormFooter";
 import { useForm, FormProvider } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { z } from "zod";
+import { saveFormSubmission } from "@/services/formService";
 
-// Initialize EmailJS with the provided credentials
 const EMAILJS_SERVICE_ID = "service_rore4kq"; 
 const EMAILJS_TEMPLATE_ID = "template_v65mr9p";  
 const EMAILJS_USER_ID = "2wqmmBMETBdP48M1_"; 
 
-// Define validation schema using Zod
 const formSchema = z.object({
   name: z.string().min(1, "Name is required"),
   email: z.string().min(1, "Email is required").email("Email is invalid"),
@@ -32,7 +30,6 @@ const ContactForm = () => {
   const navigate = useNavigate();
   const { toast } = useToast();
   
-  // Load saved form data from localStorage
   const getSavedFormData = (): Partial<FormValues> => {
     try {
       const savedData = localStorage.getItem('contactFormData');
@@ -50,19 +47,17 @@ const ContactForm = () => {
       email: "",
       phone: "",
       message: "",
-      ...getSavedFormData(), // Merge saved data with default values
+      ...getSavedFormData(),
     },
     mode: "onBlur",
   });
   
-  // Initialize EmailJS
   useEffect(() => {
     emailjs.init(EMAILJS_USER_ID);
   }, []);
 
   const sendEmail = async (data: FormValues) => {
     try {
-      // Send email notification to admin
       await emailjs.send(
         EMAILJS_SERVICE_ID,
         EMAILJS_TEMPLATE_ID,
@@ -87,7 +82,13 @@ const ContactForm = () => {
     try {
       await sendEmail(data);
       
-      // Clear saved form data after successful submission
+      await saveFormSubmission({
+        name: data.name,
+        email: data.email,
+        phone: data.phone,
+        message: data.message,
+      });
+      
       localStorage.removeItem('contactFormData');
       
       toast({
@@ -95,10 +96,9 @@ const ContactForm = () => {
         description: "We'll be in touch with you shortly.",
       });
       
-      // Navigate to thank you page
       navigate('/thank-you');
     } catch (error) {
-      console.error("Error sending email:", error);
+      console.error("Error processing form:", error);
       toast({
         title: "Something went wrong",
         description: "We couldn't process your request. Please try again later.",
