@@ -98,7 +98,7 @@ const BottomCTA = () => {
             <h2 className="text-3xl md:text-4xl font-bold text-navy animate-fade-up">Ready to Transform Your Business Operations?</h2>
             
             <p className="text-gray-600 text-lg md:text-xl">
-              Join hundreds of businesses that have streamlined operations and reduced costs with our comprehensive UK-based BPO solutions.
+              Join hundreds of businesses that have streamlined operations and reduced costs with our comprehensive BPO solutions.
             </p>
             
             <div className="flex flex-col md:flex-row gap-4 items-center justify-center text-left text-gray-700 my-2">
@@ -108,7 +108,7 @@ const BottomCTA = () => {
               </div>
               <div className="flex items-start gap-2">
                 <div className="text-coral mt-1">✓</div>
-                <div>UK-based expert teams</div>
+                <div>Expert teams</div>
               </div>
               <div className="flex items-start gap-2">
                 <div className="text-coral mt-1">✓</div>
@@ -133,10 +133,6 @@ const BottomCTA = () => {
               >
                 Schedule Your BPO Consultation <ArrowRight className="ml-2" size={18} />
               </Button>
-            </div>
-            
-            <div className="text-sm text-gray-500 italic mt-2">
-              "Working with their team transformed our operations and reduced our costs by 37% in the first quarter." — James T., CEO
             </div>
           </div>
         </div>
