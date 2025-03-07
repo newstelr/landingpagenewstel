@@ -127,12 +127,8 @@ const ContactForm = () => {
 
   return (
     <div className="container mx-auto px-4 -mt-40 mb-24 relative z-10">
-      <div className="rounded-xl shadow-2xl p-6 sm:p-10 max-w-2xl mx-auto bg-gradient-to-br from-white to-purple-50 border-2 border-purple-300/20 transform transition-all duration-300 hover:scale-[1.01] hover:shadow-purple-100">
-        <div className="absolute -top-4 left-1/2 transform -translate-x-1/2 bg-purple-600 text-white px-6 py-2 rounded-full text-sm font-semibold shadow-lg">
-          Limited Time Offer
-        </div>
-        
-        <h3 className="text-2xl sm:text-3xl font-bold text-navy mb-2 text-center bg-clip-text text-transparent bg-gradient-to-r from-purple-800 to-coral">Get Your Free Consultation</h3>
+      <div className="rounded-xl shadow-lg p-6 sm:p-10 max-w-2xl mx-auto bg-white border border-purple-200 transition-all duration-300 hover:shadow-xl">
+        <h3 className="text-2xl sm:text-3xl font-bold text-navy mb-2 text-center">Get Your Free Consultation</h3>
         <p className="text-center text-gray-600 mb-6">Our experts are ready to analyze your needs and provide solutions</p>
         
         <div className="flex justify-center space-x-4 mb-6">
@@ -206,7 +202,7 @@ const ContactForm = () => {
           
           <Button
             type="submit"
-            className="w-full bg-gradient-to-r from-purple-600 to-coral hover:from-purple-700 hover:to-coral-dark text-white py-4 sm:py-6 rounded-lg text-base sm:text-lg font-semibold transition-all duration-300 shadow-lg hover:shadow-xl"
+            className="w-full bg-purple-600 hover:bg-purple-700 text-white py-4 sm:py-6 rounded-lg text-base sm:text-lg font-semibold transition-all duration-300 shadow-md hover:shadow-lg"
             disabled={isSubmitting}
           >
             {isSubmitting ? (
