@@ -1,32 +1,40 @@
 
 import React from "react";
 import { CheckCircle, Lock, Shield } from "lucide-react";
+import { cn } from "@/lib/utils";
 
 const FormHeader: React.FC = () => {
   return (
     <>
-      <h3 className="text-2xl sm:text-3xl font-bold text-navy mb-2 text-center">
+      <h3 className="text-2xl sm:text-3xl font-bold text-navy mb-2 text-center animate-fade-up">
         Get Your Free Consultation
       </h3>
-      <p className="text-center text-gray-600 mb-6">
+      <p className="text-center text-gray-600 mb-6 animate-fade-up" style={{ animationDelay: "100ms" }}>
         Our experts are ready to analyze your needs and provide solutions
       </p>
 
-      <div className="flex justify-center space-x-4 mb-6">
-        <div className="flex items-center text-coral">
-          <CheckCircle className="h-4 w-4 mr-1" />
-          <span className="text-xs">100% Free</span>
-        </div>
-        <div className="flex items-center text-coral">
-          <Lock className="h-4 w-4 mr-1" />
-          <span className="text-xs">Secure Form</span>
-        </div>
-        <div className="flex items-center text-coral">
-          <Shield className="h-4 w-4 mr-1" />
-          <span className="text-xs">Privacy Protected</span>
-        </div>
+      <div className="flex justify-center space-x-4 mb-6 animate-fade-up" style={{ animationDelay: "200ms" }}>
+        <TrustIndicator icon={<CheckCircle className="h-4 w-4 mr-1" />} text="100% Free" />
+        <TrustIndicator icon={<Lock className="h-4 w-4 mr-1" />} text="Secure Form" />
+        <TrustIndicator icon={<Shield className="h-4 w-4 mr-1" />} text="Privacy Protected" />
       </div>
     </>
+  );
+};
+
+interface TrustIndicatorProps {
+  icon: React.ReactNode;
+  text: string;
+}
+
+const TrustIndicator: React.FC<TrustIndicatorProps> = ({ icon, text }) => {
+  return (
+    <div className={cn(
+      "flex items-center text-coral transition-transform duration-300 hover:scale-110"
+    )}>
+      {icon}
+      <span className="text-xs">{text}</span>
+    </div>
   );
 };
 
