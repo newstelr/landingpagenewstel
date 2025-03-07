@@ -9,7 +9,7 @@ const BPOHero = () => {
           Leading Business Process Outsourcing (BPO) Services
         </h1>
         <p className="mt-6 text-lg text-gray-300 text-center max-w-2xl mx-auto animate-fade-up opacity-0 [--delay:400ms]">
-          Transform your business with our comprehensive BPO solutions. Reduce operational costs by up to 40% while gaining access to specialized expertise across multiple business functions.
+          Transform your business with our comprehensive BPO solutions. Reduce operational costs significantly while gaining access to specialized expertise across multiple business functions.
         </p>
         <div className="mt-8 flex justify-center animate-fade-up opacity-0 [--delay:600ms]">
           <Button

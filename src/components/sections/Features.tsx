@@ -3,19 +3,19 @@ const Features = () => {
   return (
     <div className="bg-gray-50 py-24">
       <div className="container mx-auto px-4">
-        <h2 className="text-3xl font-bold text-center mb-16">Why Choose Our UK Customer Service Solutions</h2>
+        <h2 className="text-3xl font-bold text-center mb-16">Why Choose Our Customer Service Solutions</h2>
         <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
           {[
             {
-              title: "UK-Based Support Team",
+              title: "Experienced Support Team",
               subtitle: "Native English-Speaking Professionals",
             },
             {
               title: "24/7 Customer Care",
-              subtitle: "Round-the-Clock UK Coverage",
+              subtitle: "Round-the-Clock Coverage",
             },
             {
-              title: "40% Cost Reduction",
+              title: "Significant Cost Reduction",
               subtitle: "Without Reducing Quality",
             },
           ].map((feature, index) => (

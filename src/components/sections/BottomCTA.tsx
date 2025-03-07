@@ -104,7 +104,7 @@ const BottomCTA = () => {
             <div className="flex flex-col md:flex-row gap-4 items-center justify-center text-left text-gray-700 my-2">
               <div className="flex items-start gap-2">
                 <div className="text-coral mt-1">✓</div>
-                <div>40% cost reduction</div>
+                <div>Cost reduction</div>
               </div>
               <div className="flex items-start gap-2">
                 <div className="text-coral mt-1">✓</div>

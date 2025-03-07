@@ -9,7 +9,7 @@ const Hero = () => {
           Premier Outsourced Customer Service Solutions
         </h1>
         <p className="mt-6 text-lg text-gray-300 text-center max-w-2xl mx-auto animate-fade-up opacity-0 [--delay:400ms]">
-          Improve your customer experience with our outsourced customer service team. Cut costs by up to 40% while keeping exceptional service quality.
+          Improve your customer experience with our outsourced customer service team. Cut costs significantly while keeping exceptional service quality.
         </p>
         <div className="mt-8 flex justify-center animate-fade-up opacity-0 [--delay:600ms]">
           <Button
