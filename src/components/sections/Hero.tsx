@@ -15,7 +15,7 @@ const Hero = () => {
           <Button
             className="bg-coral hover:bg-coral-dark text-white px-8 py-6 rounded-full text-lg transition-all duration-300"
           >
-            Get Your Free Support Quote Today
+            Book Your Free BPO Consultation
           </Button>
         </div>
       </div>

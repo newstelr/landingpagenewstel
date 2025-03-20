@@ -1,4 +1,3 @@
-
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 import { 
@@ -98,7 +97,7 @@ const BPOServices = () => {
               form?.scrollIntoView({ behavior: 'smooth' });
             }}
           >
-            Get Your Free BPO Consultation
+            Book Your Free BPO Consultation
           </Button>
         </div>
       </div>

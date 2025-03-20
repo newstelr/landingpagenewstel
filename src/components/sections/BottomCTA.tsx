@@ -131,7 +131,7 @@ const BottomCTA = () => {
                   }
                 }}
               >
-                Schedule Your BPO Consultation <ArrowRight className="ml-2" size={18} />
+                Book Your Free BPO Consultation <ArrowRight className="ml-2" size={18} />
               </Button>
             </div>
           </div>

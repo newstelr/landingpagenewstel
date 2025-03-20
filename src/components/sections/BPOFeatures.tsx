@@ -1,4 +1,3 @@
-
 import { Button } from "@/components/ui/button";
 import { CheckCircle, TrendingUp, Users } from "lucide-react";
 
@@ -48,7 +47,7 @@ const BPOFeatures = () => {
               form?.scrollIntoView({ behavior: 'smooth' });
             }}
           >
-            Get Your Free BPO Consultation Today
+            Book Your Free BPO Consultation
           </Button>
         </div>
       </div>
