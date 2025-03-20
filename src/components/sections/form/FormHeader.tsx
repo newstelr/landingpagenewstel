@@ -18,6 +18,17 @@ const FormHeader: React.FC = () => {
         <TrustIndicator icon={<Lock className="h-4 w-4 mr-1" />} text="Secure Form" />
         <TrustIndicator icon={<Shield className="h-4 w-4 mr-1" />} text="Privacy Protected" />
       </div>
+      
+      <div className="flex justify-center items-center mb-6 animate-fade-up" style={{ animationDelay: "300ms" }}>
+        <div className="flex flex-col items-center">
+          <p className="text-sm text-gray-600 font-medium mb-1">Member Of</p>
+          <img 
+            src="/lovable-uploads/e821845c-97a0-48f3-928b-285565b2cefe.png" 
+            alt="UKCCF - UK Contact Centre Forum" 
+            className="h-12 object-contain" 
+          />
+        </div>
+      </div>
     </>
   );
 };
