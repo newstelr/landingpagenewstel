@@ -13,6 +13,7 @@ import { ExitPopup } from "@/components/ui/exit-popup";
 const navigationLinks = [
   { text: "Contact", href: "/contact" },
   { text: "BPO Services", href: "/bpo-service" },
+  { text: "About Us", href: "/about-us" },
 ];
 
 const Index = () => {

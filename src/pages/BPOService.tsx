@@ -12,6 +12,7 @@ import { useState, useEffect } from "react";
 const navigationLinks = [
   { text: "Contact", href: "/contact" },
   { text: "Home", href: "/" },
+  { text: "About Us", href: "/about-us" },
 ];
 
 const BPOService = () => {
