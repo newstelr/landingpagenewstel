@@ -1,3 +1,4 @@
+
 import { useState, useEffect } from "react";
 import { Button } from "@/components/ui/button";
 import { useNavigate } from "react-router-dom";
@@ -96,7 +97,7 @@ const ContactForm = () => {
         description: "We'll be in touch with you shortly.",
       });
       
-      navigate('/thank-you');
+      navigate('/thank_you_outsourcing_uk');
     } catch (error) {
       console.error("Error processing form:", error);
       toast({
