@@ -2,8 +2,16 @@
 import { Button } from "@/components/ui/button";
 import { Link } from "react-router-dom";
 import { CheckCircle } from "lucide-react";
+import { useEffect } from "react";
 
 const ThankYou = () => {
+  useEffect(() => {
+    // Add Google Ads conversion tracking
+    if (window.gtag) {
+      window.gtag('event', 'conversion', {'send_to': 'AW-764344211/0VcmCP-h_rEaEJPvi-wC'});
+    }
+  }, []);
+
   return (
     <div className="min-h-screen flex items-center justify-center bg-gradient-to-br from-blue-50 to-pink-50 px-4">
       <div className="max-w-md w-full bg-white rounded-xl shadow-2xl p-8 text-center">
