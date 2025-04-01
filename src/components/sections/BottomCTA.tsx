@@ -1,4 +1,3 @@
-
 import { Button } from "@/components/ui/button";
 import { ArrowRight, Star } from "lucide-react";
 import useEmblaCarousel from 'embla-carousel-react';
@@ -131,7 +130,7 @@ const BottomCTA = () => {
                   }
                 }}
               >
-                Book Your Free BPO Consultation <ArrowRight className="ml-2" size={18} />
+                Get My Free Consultation <ArrowRight className="ml-2" size={18} />
               </Button>
             </div>
           </div>

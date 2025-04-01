@@ -19,7 +19,7 @@ const CTA = () => {
             }
           }}
         >
-          Book Your Free BPO Consultation
+          Get My Free Consultation
         </Button>
       </div>
     </div>
