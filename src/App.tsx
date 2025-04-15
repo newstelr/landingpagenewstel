@@ -12,6 +12,7 @@ import TermsOfService from "./pages/TermsOfService";
 import CookiePolicy from "./pages/CookiePolicy";
 import BPOService from "./pages/BPOService";
 import AboutUs from "./pages/AboutUs";
+import CallCenter from "./pages/CallCenter";
 
 const queryClient = new QueryClient();
 
@@ -23,13 +24,13 @@ const App = () => (
       <BrowserRouter>
         <Routes>
           <Route path="/" element={<Index />} />
+          <Route path="/call-center" element={<CallCenter />} />
           <Route path="/bpo-service" element={<BPOService />} />
           <Route path="/about-us" element={<AboutUs />} />
           <Route path="/thank_you_outsourcing_uk" element={<ThankYouOutsourcingUk />} />
           <Route path="/privacy-policy" element={<PrivacyPolicy />} />
           <Route path="/terms-of-service" element={<TermsOfService />} />
           <Route path="/cookie-policy" element={<CookiePolicy />} />
-          {/* ADD ALL CUSTOM ROUTES ABOVE THE CATCH-ALL "*" ROUTE */}
           <Route path="*" element={<NotFound />} />
         </Routes>
       </BrowserRouter>
