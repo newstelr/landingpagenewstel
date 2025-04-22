@@ -1,4 +1,3 @@
-
 import React from "react";
 
 interface ClientTestimonialProps {
@@ -15,7 +14,7 @@ const ClientTestimonial: React.FC<ClientTestimonialProps> = ({
   companyLogoSrc,
 }) => {
   return (
-    <div className="rounded-lg bg-navy/95 text-white px-6 py-7 sm:py-8 sm:px-10 shadow-xl mb-8 text-center flex flex-col items-center justify-center animate-fade-in">
+    <div className="rounded-lg bg-navy/95 text-white px-6 py-7 sm:py-8 sm:px-10 shadow-xl mb-8 text-center flex flex-col items-center justify-center animate-fade-in max-w-2xl mx-auto">
       <img
         src={companyLogoSrc}
         alt={company + " logo"}
