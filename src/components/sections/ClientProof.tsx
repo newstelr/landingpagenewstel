@@ -5,12 +5,6 @@ import { cn } from "@/lib/utils";
 
 const testimonials = [
   {
-    quote: "Newstel's customer service team has been a game-changer for our business. They've helped us scale our support operations while keeping costs manageable.",
-    author: "David Chen, Operations Manager",
-    company: "Dice",
-    companyLogoSrc: "/lovable-uploads/e821845c-97a0-48f3-928b-285565b2cefe.png"
-  },
-  {
     quote: "The flexibility and quality of service we've received has been exceptional. Our customers can't tell the difference between our in-house and outsourced support.",
     author: "Emma Williams, Customer Experience Director",
     company: "Bloom & Wild",
