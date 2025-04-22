@@ -1,4 +1,3 @@
-
 import { Navbar } from "@/components/ui/navbar";
 import CallCenterHero from "@/components/sections/CallCenterHero";
 import ContactForm from "@/components/sections/ContactForm";
@@ -7,6 +6,7 @@ import CallCenterServices from "@/components/sections/CallCenterServices";
 import CTA from "@/components/sections/CTA";
 import BottomCTA from "@/components/sections/BottomCTA";
 import Footer from "@/components/sections/Footer";
+import GlobalTestimonial from "@/components/sections/GlobalTestimonial";
 import { useState, useEffect } from "react";
 
 const navigationLinks = [
@@ -37,6 +37,7 @@ const CallCenter = () => {
       <CallCenterFeatures />
       <CTA />
       <CallCenterServices />
+      <GlobalTestimonial />
       <Footer />
     </div>
   );

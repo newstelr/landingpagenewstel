@@ -1,10 +1,10 @@
-
 import { Navbar } from "@/components/ui/navbar";
 import Footer from "@/components/sections/Footer";
 import ContactForm from "@/components/sections/ContactForm";
 import BottomCTA from "@/components/sections/BottomCTA";
 import { Button } from "@/components/ui/button";
 import { Building, Users, Award, Globe } from "lucide-react";
+import GlobalTestimonial from "@/components/sections/GlobalTestimonial";
 
 const navigationLinks = [
   { text: "Contact", href: "/contact" },
@@ -160,6 +160,7 @@ const AboutUs = () => {
       </section>
       
       <BottomCTA />
+      <GlobalTestimonial />
       <Footer />
     </div>
   );

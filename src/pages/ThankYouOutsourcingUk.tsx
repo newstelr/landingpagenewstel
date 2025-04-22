@@ -1,10 +1,10 @@
-
 import { Button } from "@/components/ui/button";
 import { Link } from "react-router-dom";
 import { CheckCircle } from "lucide-react";
 import { useEffect } from "react";
 import LogoGrid from "@/components/ui/LogoGrid";
 import ClientTestimonial from "@/components/ui/ClientTestimonial";
+import GlobalTestimonial from "@/components/sections/GlobalTestimonial";
 
 const thankYouTestimonial = {
   quote: "Newstel have consistently exceeded our expectations in service and flexibility. We trust them as a core partner for OnBuy’s world-class customer experience.",
@@ -88,7 +88,6 @@ const ThankYou = () => {
           A confirmation email has been sent to your inbox.
         </p>
 
-        {/* What happens next (existing section) */}
         <div className="bg-gray-100 rounded-lg p-4 mb-6 text-left">
           <h3 className="font-semibold text-navy mb-2">What happens next?</h3>
           <ul className="text-gray-600 list-disc pl-5 space-y-1">
@@ -98,13 +97,11 @@ const ThankYou = () => {
           </ul>
         </div>
 
-        {/* Testimonial Section */}
         <section className="w-full mb-7">
           <h2 className="font-semibold text-md uppercase tracking-wider text-coral mb-3">Trusted by Global Brands</h2>
           <ClientTestimonial {...thankYouTestimonial} />
         </section>
 
-        {/* Logo Grid - Our Clients */}
         <section className="w-full mb-7">
           <div className="text-xs text-gray-500 mb-2 font-semibold uppercase tracking-wider text-center">
             Our Clients
@@ -117,6 +114,10 @@ const ThankYou = () => {
             Return to Homepage
           </Button>
         </Link>
+
+        <div className="mt-10">
+          <GlobalTestimonial />
+        </div>
       </div>
     </div>
   );

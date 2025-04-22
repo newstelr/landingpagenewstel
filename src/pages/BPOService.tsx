@@ -1,4 +1,3 @@
-
 import { Navbar } from "@/components/ui/navbar";
 import BPOHero from "@/components/sections/BPOHero";
 import ContactForm from "@/components/sections/ContactForm";
@@ -8,6 +7,7 @@ import BPOClientProof from "@/components/sections/BPOClientProof";
 import CTA from "@/components/sections/CTA";
 import BottomCTA from "@/components/sections/BottomCTA";
 import Footer from "@/components/sections/Footer";
+import GlobalTestimonial from "@/components/sections/GlobalTestimonial";
 import { useState, useEffect } from "react";
 
 const navigationLinks = [
@@ -39,6 +39,7 @@ const BPOService = () => {
       <BPOServices />
       <CTA />
       <BottomCTA />
+      <GlobalTestimonial />
       <Footer />
     </div>
   );

@@ -9,6 +9,7 @@ import BottomCTA from "@/components/sections/BottomCTA";
 import Footer from "@/components/sections/Footer";
 import { useState, useEffect, useCallback } from "react";
 import { ExitPopup } from "@/components/ui/exit-popup";
+import GlobalTestimonial from "@/components/sections/GlobalTestimonial";
 
 const navigationLinks = [
   { text: "Contact", href: "/contact" },
@@ -71,6 +72,7 @@ const Index = () => {
       <Services />
       <CTA />
       <BottomCTA />
+      <GlobalTestimonial />
       <Footer />
       
       {showExitPopup && <ExitPopup onClose={handleClosePopup} />}
