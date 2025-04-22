@@ -4,6 +4,7 @@ import BPOHero from "@/components/sections/BPOHero";
 import ContactForm from "@/components/sections/ContactForm";
 import BPOFeatures from "@/components/sections/BPOFeatures";
 import BPOServices from "@/components/sections/BPOServices";
+import BPOClientProof from "@/components/sections/BPOClientProof";
 import CTA from "@/components/sections/CTA";
 import BottomCTA from "@/components/sections/BottomCTA";
 import Footer from "@/components/sections/Footer";
@@ -33,10 +34,11 @@ const BPOService = () => {
       <Navbar links={navigationLinks} />
       <BPOHero />
       <ContactForm />
-      <BottomCTA />
+      <BPOClientProof />
       <BPOFeatures />
-      <CTA />
       <BPOServices />
+      <CTA />
+      <BottomCTA />
       <Footer />
     </div>
   );
