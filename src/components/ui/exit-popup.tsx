@@ -42,6 +42,11 @@ export const ExitPopup = ({ onClose }: ExitPopupProps) => {
         templateParams,
         "NbJTBJpbXZRiSPBw-" // Replace with your EmailJS public key
       );
+      
+      // Google Ads conversion tracking: subscription confirmation
+      if (typeof window !== "undefined" && window.gtag) {
+        window.gtag('event', 'conversion', {'send_to': 'AW-764344211/A9A5CPnFsPUBEJPvu-wC'});
+      }
 
       toast({
         title: "Thank you!",
@@ -113,3 +118,4 @@ export const ExitPopup = ({ onClose }: ExitPopupProps) => {
     </div>
   );
 };
+

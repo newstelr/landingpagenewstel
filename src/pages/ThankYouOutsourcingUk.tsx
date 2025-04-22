@@ -1,4 +1,3 @@
-
 import { Button } from "@/components/ui/button";
 import { Link } from "react-router-dom";
 import { CheckCircle } from "lucide-react";
@@ -6,9 +5,9 @@ import { useEffect } from "react";
 
 const ThankYou = () => {
   useEffect(() => {
-    // Add Google Ads conversion tracking
-    if (window.gtag) {
-      window.gtag('event', 'conversion', {'send_to': 'AW-764344211/0VcmCP-h_rEaEJPvi-wC'});
+    // Google Ads conversion tracking on Thank You page
+    if (typeof window !== "undefined" && window.gtag) {
+      window.gtag('event', 'conversion', {'send_to': 'AW-764344211/A9A5CPnFsPUBEJPvu-wC'});
     }
   }, []);
 
