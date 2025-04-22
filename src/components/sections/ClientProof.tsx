@@ -63,7 +63,7 @@ const ClientProof: React.FC<ClientProofProps> = ({ className }) => {
         </div>
         
         {/* Client Testimonials */}
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-8 mb-16">
+        <div className="flex justify-center">
           {testimonials.map((testimonial, index) => (
             <ClientTestimonial
               key={index}
