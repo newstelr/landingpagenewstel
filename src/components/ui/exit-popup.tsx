@@ -1,10 +1,10 @@
-
 import { useState, useEffect } from "react";
 import { X } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { useToast } from "@/hooks/use-toast";
 import emailjs from "emailjs-com";
+import LogoGrid from "./LogoGrid";
 
 interface ExitPopupProps {
   onClose: () => void;
@@ -28,22 +28,19 @@ export const ExitPopup = ({ onClose }: ExitPopupProps) => {
     setIsSubmitting(true);
     
     try {
-      // Prepare template parameters for EmailJS
       const templateParams = {
         email: email,
         message: "Customer requested the call center selection guide via exit popup",
         source: "Exit Popup Form",
       };
 
-      // Send email using EmailJS
       await emailjs.send(
-        "service_6z4q337", // Replace with your EmailJS service ID
-        "template_hc5ierc", // Replace with your EmailJS template ID
+        "service_6z4q337",
+        "template_hc5ierc",
         templateParams,
-        "NbJTBJpbXZRiSPBw-" // Replace with your EmailJS public key
+        "NbJTBJpbXZRiSPBw-"
       );
-      
-      // Google Ads conversion tracking: subscription confirmation
+
       if (typeof window !== "undefined" && window.gtag) {
         window.gtag('event', 'conversion', {'send_to': 'AW-764344211/A9A5CPnFsPUBEJPvu-wC'});
       }
@@ -64,6 +61,29 @@ export const ExitPopup = ({ onClose }: ExitPopupProps) => {
       setIsSubmitting(false);
     }
   };
+
+  const logos = [
+    {
+      name: "OnBuy",
+      imageSrc: "/lovable-uploads/7f08cf46-feea-4821-a3b7-60755226e117.png",
+      alt: "OnBuy logo"
+    },
+    {
+      name: "Anthropologie",
+      imageSrc: "/lovable-uploads/b5b646f6-ef6f-4675-9e14-99d36e4d7b84.png",
+      alt: "Anthropologie logo"
+    },
+    {
+      name: "Urban Outfitters",
+      imageSrc: "/lovable-uploads/fb33121b-3ddb-4866-b0f5-5f6dbbefdcbf.png",
+      alt: "Urban Outfitters logo"
+    },
+    {
+      name: "NordicTrack",
+      imageSrc: "/lovable-uploads/b6c78906-c711-4072-9d1a-d2d8d1ca250b.png",
+      alt: "NordicTrack logo"
+    }
+  ];
 
   return (
     <div className="fixed inset-0 bg-black/50 z-50 flex items-center justify-center p-4 backdrop-blur-sm">
@@ -87,11 +107,21 @@ export const ExitPopup = ({ onClose }: ExitPopupProps) => {
             Wait! Don't Miss Out!
           </h3>
           
-          <p className="text-gray-600 mb-6">
+          <p className="text-gray-600 mb-2">
             Leave your email and we'll send you our <span className="font-bold text-coral">comprehensive guide</span> on how to choose the right call center service for your business.
           </p>
+          <p className="text-xs text-navy/80 font-semibold mb-4">
+            Join industry leaders like OnBuy and Urban Outfitters.
+          </p>
           
-          <form onSubmit={handleSubmit} className="space-y-4">
+          <div className="mb-5">
+            <div className="mb-2 text-xs font-medium tracking-wide text-center text-gray-500 uppercase">
+              Trusted by Leading Brands
+            </div>
+            <LogoGrid logos={logos} columns={4} className="mb-0" />
+          </div>
+          
+          <form onSubmit={handleSubmit} className="space-y-4 mt-2">
             <Input
               type="email"
               placeholder="Enter your email"
@@ -118,4 +148,3 @@ export const ExitPopup = ({ onClose }: ExitPopupProps) => {
     </div>
   );
 };
-
